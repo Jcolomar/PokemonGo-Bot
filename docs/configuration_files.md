@@ -75,9 +75,15 @@ Document the configuration options of PokemonGo-Bot.
 
 1. copy `auth.json.example` to `auth.json`.
 2. Edit `auth.json` and replace `auth_service`, `username`, `password`, `location` and `gmapkey` with your parameters (other keys are optional)
-3. copy `config.json.example` to `config.json`.=
-3. Simply launch the script with : `./run.sh` or './run.sh ./configs/your_auth_file.json ./configs/your_base_config_file.json'
+3. copy `config.json.example` to `config.json`.
+3. Simply launch the script with : `./run.sh` or `./run.sh ./configs/your_auth_file.json ./configs/your_base_config_file.json`
 
+### About locale\_by\_location
+[[back to top](#table-of-contents)]
+
+By default the bot will tell game server that current timezone is `"America/Chicago"`. By seting `locale_by_location` to `true`, the bot will use google API to determine Country Code and Timezone base on bot's location and send this information to game server.
+
+Please make sure you have both Google Maps Geocoding API and Google Maps Time Zone API enabled in [Google API Manager] (https://console.developers.google.com/) if you want to set this option to true.
 
 ## Advanced Configuration
 [[back to top](#table-of-contents)]
@@ -173,6 +179,7 @@ The behaviors of the bot are configured via the `tasks` key in the `config.json`
 
 ### Task Options:
 [[back to top](#table-of-contents)]
+
 * CatchPokemon
   * `enabled`: Default "true" | Enable/Disable the task.
   * `always_catch_family_of_vip`: Default "false" | Always catch family members of a VIP, even if locked on a target.
@@ -297,7 +304,7 @@ The behaviors of the bot are configured via the `tasks` key in the `config.json`
 
 ### Specify a custom log_interval for specific task
 
-  ```
+```
     {
       "type": "MoveToFort",
       "config": {
@@ -308,7 +315,7 @@ The behaviors of the bot are configured via the `tasks` key in the `config.json`
         "log_interval": 5
       }
     }
-   ```
+```
 
    Result:
 
@@ -422,6 +429,19 @@ For example:
 }
 ```
 will stop catching Pidgey entirely.
+
+You can set a rule to only catch better IV or CP Pokemon by setting the only_catch_better_cp or only_catch_better_iv flags.
+
+
+For example:
+```
+"Pidgey": {
+    "only_catch_better_iv": true
+},
+"Gloom": {
+    "only_catch_better_cp": true
+}
+```
 
 ## Release Configuration
 [[back to top](#table-of-contents)]
@@ -657,7 +677,7 @@ Key | Info
 - `"{iv_pct}_{iv_ads}"` => `091_15/11/15`
 - `""` -> `Mankey`
 - `"{attack_code}{attack_pct1}{defense_pct1}{ivcp_pct1}{name}"` => `Lh474Golbat`
-![sample](https://cloud.githubusercontent.com/assets/8896778/17285954/0fa44a88-577b-11e6-8204-b1302f4294bd.png)
+- ![sample](https://cloud.githubusercontent.com/assets/8896778/17285954/0fa44a88-577b-11e6-8204-b1302f4294bd.png)
 
 ### Sample configuration
 [[back to top](#table-of-contents)]

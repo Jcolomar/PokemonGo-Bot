@@ -10,8 +10,10 @@
         }
     ],
     "gmapkey": "GOOGLE_MAPS_API_KEY",
+    "locale_by_location": false,
     "hashkey" : "YOUR_PURCHASED_HASH_KEY",
     "telegram_token": "",
     "discord_token": "",
-    "2captcha_token": ""
+    "2captcha_token": "",
+    "proxy": ""
 }
